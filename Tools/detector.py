@@ -68,10 +68,11 @@ def testImage(imagePath, decisionThreshold = cfg.decision_threshold, applyNMS=Tr
 
                 #Get current window
                 subImage = views[row, col]
+                #subImage = np.array(subImage).reshape(np.shape(subImage)[1:])
                 #Extract features
                 feats = feature_extractor.extractFeatures(subImage)
                 #Obtain prediction score
-                decision_func = svc.decision_function(feats)
+                decision_func = svc.decision_function(np.array(feats).reshape(1,-1))
 
                 if decision_func > decisionThreshold:
                     # Pedestrian found!

@@ -26,8 +26,8 @@ from Tools import drawing
 from PIL import Image
 import matplotlib.pyplot as plt
 import platform
-def run():
-    imagePath = 'Images/Image001.png'
+def run(imagePath):
+    #imagePath = 'Images/Image002.png'
     bboxes, scores = detector.testImage(imagePath, applyNMS=True)
 
     img = Image.open(imagePath)
@@ -38,6 +38,8 @@ def run():
         plt.show()
     else:
         img.show()
+
+    return(img)
 
 if __name__ == '__main__':
     run()
